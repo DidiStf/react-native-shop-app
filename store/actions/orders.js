@@ -1,5 +1,7 @@
 import Order from '../../models/order';
-import { clearCartAction } from '../actions/cart';
+import {
+  clearCartAction
+} from '../actions/cart';
 
 const ACTION_KEY = 'orders';
 const API_PATH = 'https://shop-app-didistf.firebaseio.com';
@@ -8,7 +10,9 @@ export const ADD_ORDER = `${ACTION_KEY}/addOrder`;
 export const GET_ALL_ORDERS = `${ACTION_KEY}/getAllOrders`;
 
 export const fetchAllOrdersAction = () => async (dispatch, getState) => {
-  const { userId } = getState().user;
+  const {
+    userId
+  } = getState().user;
   try {
     const result = await fetch(`${API_PATH}/orders/${userId}.json`);
 
@@ -20,12 +24,18 @@ export const fetchAllOrdersAction = () => async (dispatch, getState) => {
     const resData = await result.json();
     const loadedOrders = [];
     for (const key in resData) {
-      const { items, amount, date } = resData[key];
+      const {
+        items,
+        amount,
+        date
+      } = resData[key];
       loadedOrders.push(new Order(key, items, amount, new Date(date)));
     }
     return dispatch({
       type: GET_ALL_ORDERS,
-      payload: { orders: loadedOrders },
+      payload: {
+        orders: loadedOrders
+      },
     });
   } catch (error) {
     throw error;
@@ -33,11 +43,13 @@ export const fetchAllOrdersAction = () => async (dispatch, getState) => {
 };
 
 export const addOrderAction = (items, amount) => async (dispatch, getState) => {
-  const { token, userId } = getState().user;
+  const {
+    token,
+    userId
+  } = getState().user;
   const date = new Date();
   const result = await fetch(
-    `${API_PATH}/orders/${userId}.json?auth=${token}`,
-    {
+    `${API_PATH}/orders/${userId}.json?auth=${token}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,7 +69,7 @@ export const addOrderAction = (items, amount) => async (dispatch, getState) => {
 
   const resData = await result.json();
   dispatch(clearCartAction());
-  return dispatch({
+  dispatch({
     type: ADD_ORDER,
     payload: {
       id: resData.name,
@@ -65,5 +77,25 @@ export const addOrderAction = (items, amount) => async (dispatch, getState) => {
       amount,
       date,
     },
+  });
+
+  items.forEach(({
+    title,
+    pushToken
+  }) => {
+
+    fetch('https://exp.host/--/api/v2/push/send', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Accept-Encoding': 'gzip, deflate',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        to: pushToken,
+        title: 'Order was placed!',
+        body: title,
+      }),
+    });
   });
 };

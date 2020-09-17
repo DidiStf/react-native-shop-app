@@ -24,6 +24,7 @@ const productsReducer = (state = initialState, action) => {
       const {
         id,
         ownerId,
+        pushToken,
         title,
         imageUrl,
         description,
@@ -32,6 +33,7 @@ const productsReducer = (state = initialState, action) => {
       const newProduct = new Product(
         id,
         ownerId,
+        pushToken,
         title,
         imageUrl,
         description,
@@ -67,6 +69,7 @@ const productsReducer = (state = initialState, action) => {
       const updatedProduct = new Product(
         id,
         product.ownerId,
+        product.pushToken,
         title,
         imageUrl,
         description,
