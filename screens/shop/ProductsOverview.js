@@ -45,12 +45,10 @@ const ProductsOverviewScreen = ({ navigation }) => {
 
   //refetch whenever we reach this page when the transition begins
   useEffect(() => {
-    const willFocusSubscription = navigation.addListener('willFocus', () =>
-      loadProducts()
-    );
+    const unsubscribe = navigation.addListener('focus', () => loadProducts());
 
     return () => {
-      willFocusSubscription.remove();
+      unsubscribe();
     };
     /* we won't add navigation nor addListener as dependencies to avoid entering in an infinite
     loop if we change navigation for example by setting some props to comunicate wuth the header, etc. */
@@ -116,7 +114,7 @@ const ProductsOverviewScreen = ({ navigation }) => {
   );
 };
 
-ProductsOverviewScreen.navigationOptions = ({ navigation }) => {
+export const productsOverviewScreenOptions = ({ navigation }) => {
   const menuIcon = isAndroid ? 'md-menu' : 'ios-menu';
   const cartIcon = isAndroid ? 'md-cart' : 'ios-cart';
 

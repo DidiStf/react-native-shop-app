@@ -14,9 +14,9 @@ import { selectProductById } from '../../store/selectors/products';
 
 import colors from '../../constants/colors';
 
-const ProductDetailScreen = ({ navigation }) => {
+const ProductDetailScreen = ({ route }) => {
   const dispatch = useDispatch();
-  const productId = navigation.getParam('productId');
+  const { productId } = route.params || {};
   const selectedProduct = useSelector((state) =>
     selectProductById(state, productId)
   );
@@ -43,9 +43,9 @@ const ProductDetailScreen = ({ navigation }) => {
   );
 };
 
-ProductDetailScreen.navigationOptions = ({ navigation }) => {
+export const productDetailScreenOptions = ({ route }) => {
   return {
-    headerTitle: navigation.getParam('productTitle'),
+    headerTitle: route.params?.productTitle,
   };
 };
 

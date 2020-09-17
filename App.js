@@ -11,7 +11,7 @@ import cartReducer from './store/reducers/cart';
 import ordersReducer from './store/reducers/orders';
 import productsReducer from './store/reducers/products';
 import userReducer from './store/reducers/user';
-import NavigationContainer from './navigation/NavigationContainer';
+import AppNavigator from './navigation/AppNavigator';
 
 const rootReducer = combineReducers({
   products: productsReducer,
@@ -36,7 +36,7 @@ export default function App() {
 
   return fontLoaded ? (
     <Provider store={store}>
-      <NavigationContainer />
+      <AppNavigator />
     </Provider>
   ) : (
     <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} />
