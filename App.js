@@ -1,21 +1,9 @@
-import React, {
-  useState
-} from 'react';
-import {
-  YellowBox
-} from 'react-native';
-import {
-  Provider
-} from 'react-redux';
-import {
-  applyMiddleware,
-  combineReducers,
-  createStore
-} from 'redux';
+import React, { useState } from 'react';
+import { YellowBox } from 'react-native';
+import { Provider } from 'react-redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import {
-  AppLoading
-} from 'expo';
+import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import * as Notifications from 'expo-notifications';
 //import { composeWithDevTools } from 'redux-devtools-extension';
@@ -29,7 +17,7 @@ import AppNavigator from './navigation/AppNavigator';
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
-  })
+  }),
 });
 
 const rootReducer = combineReducers({
@@ -53,21 +41,11 @@ export default function App() {
 
   const [fontLoaded, setFontLoaded] = useState(false);
 
-  return fontLoaded ? ( <
-    Provider store = {
-      store
-    } >
-    <
-    AppNavigator / >
-    <
-    /Provider>
-  ) : ( <
-    AppLoading startAsync = {
-      fetchFonts
-    }
-    onFinish = {
-      () => setFontLoaded(true)
-    }
-    />
+  return fontLoaded ? (
+    <Provider store={store}>
+      <AppNavigator />
+    </Provider>
+  ) : (
+    <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} />
   );
 }
