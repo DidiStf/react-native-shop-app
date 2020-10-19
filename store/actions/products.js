@@ -1,3 +1,6 @@
+import * as Notifications from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
+
 import Product from '../../models/product';
 import { deleteProductFromCartAction } from '../actions/cart';
 
@@ -22,9 +25,24 @@ export const fetchAllProductsAction = () => async (dispatch, getState) => {
     const resData = await result.json();
     const loadedProducts = [];
     for (const key in resData) {
-      const { title, imageUrl, description, price, ownerId } = resData[key];
+      const {
+        title,
+        imageUrl,
+        description,
+        price,
+        ownerId,
+        ownerPushToken,
+      } = resData[key];
       loadedProducts.push(
-        new Product(key, ownerId, title, imageUrl, description, price)
+        new Product(
+          key,
+          ownerId,
+          ownerPushToken,
+          title,
+          imageUrl,
+          description,
+          price
+        )
       );
     }
     const userProducts = loadedProducts.filter(
@@ -43,13 +61,29 @@ export const createProductAction = (productData) => async (
   dispatch,
   getState
 ) => {
+  let statusObj = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+  let pushToken;
+
+  if (statusObj.status !== 'granted') {
+    statusObj = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+  }
+  if (statusObj.status !== 'granted') {
+    pushToken = null;
+  } else {
+    pushToken = (await Notifications.getExpoPushTokenAsync()).data;
+  }
+
   const { token, userId } = getState().user;
   const result = await fetch(`${API_PATH}/products.json?auth=${token}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ ...productData, ownerId: userId }),
+    body: JSON.stringify({
+      ...productData,
+      ownerId: userId,
+      ownerPushToken: pushToken,
+    }),
   });
   const resData = await result.json();
 
@@ -61,7 +95,12 @@ export const createProductAction = (productData) => async (
   return dispatch({
     type: CREATE_PRODUCT,
     payload: {
-      productData: { ...productData, id: resData.name, ownerId: userId },
+      productData: {
+        ...productData,
+        id: resData.name,
+        ownerId: userId,
+        pushToken,
+      },
     },
   });
 };

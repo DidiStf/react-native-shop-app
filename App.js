@@ -5,6 +5,7 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
+import * as Notifications from 'expo-notifications';
 //import { composeWithDevTools } from 'redux-devtools-extension';
 
 import cartReducer from './store/reducers/cart';
@@ -12,6 +13,12 @@ import ordersReducer from './store/reducers/orders';
 import productsReducer from './store/reducers/products';
 import userReducer from './store/reducers/user';
 import AppNavigator from './navigation/AppNavigator';
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+  }),
+});
 
 const rootReducer = combineReducers({
   products: productsReducer,
