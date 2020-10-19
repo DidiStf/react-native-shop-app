@@ -4,7 +4,10 @@ import { useDispatch } from 'react-redux';
 
 import Centered from '../components/ui/Centered';
 
-import { authenticateUserAction } from '../store/actions/user';
+import {
+  attemptAutologinUser,
+  authenticateUserAction,
+} from '../store/actions/user';
 
 import colors from '../constants/colors';
 
@@ -13,16 +16,23 @@ const StartupScreen = ({ navigation }) => {
 
   const tryLogIn = async () => {
     const userData = await AsyncStorage.getItem('userData');
-    if (!userData) return navigation.navigate('Authentication');
+
+    if (!userData) {
+      dispatch(attemptAutologinUser());
+    }
+
     const transformedData = JSON.parse(userData);
     const { token, userId, expiryDate } = transformedData;
     const tokenExpirationDate = new Date(expiryDate);
-    if (tokenExpirationDate <= new Date() || !token || !userId)
-      return navigation.navigate('Authentication');
+
+    if (tokenExpirationDate <= new Date() || !token || !userId) {
+      dispatch(attemptAutologinUser());
+    }
+
     const expiryTimeInMiliseconds =
       tokenExpirationDate.getTime() - new Date().getTime();
+
     dispatch(authenticateUserAction(userId, token, expiryTimeInMiliseconds));
-    navigation.navigate('Shop');
   };
 
   useEffect(() => {

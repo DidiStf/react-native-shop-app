@@ -79,7 +79,7 @@ const UserProductsScreen = ({ navigation }) => {
   );
 };
 
-UserProductsScreen.navigationOptions = ({ navigation }) => {
+export const userProductsScreenOptions = ({ navigation }) => {
   const menuIcon = isAndroid ? 'md-menu' : 'ios-menu';
   const addIcon = isAndroid ? 'md-create' : 'ios-create';
 

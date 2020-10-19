@@ -58,11 +58,11 @@ const setInitialState = (initialValue) => ({
   description: initialValue.description || '',
 });
 
-const EditProductScreen = ({ navigation }) => {
+const EditProductScreen = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(undefined);
-  const productId = navigation.getParam('productId');
+  const { productId } = route.params || {};
   const product = productId
     ? useSelector((state) => selectProductById(state, productId))
     : {};
@@ -122,8 +122,13 @@ const EditProductScreen = ({ navigation }) => {
   }, [dispatch, productId, formState]);
 
   useEffect(() => {
-    navigation.setParams({
-      submit: handleSubmit,
+    const saveIcon = isAndroid ? 'md-checkmark' : 'ios-checkmark';
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+          <Item title='Save' iconName={saveIcon} onPress={handleSubmit} />
+        </HeaderButtons>
+      ),
     });
   }, [handleSubmit]);
 
@@ -210,18 +215,12 @@ const EditProductScreen = ({ navigation }) => {
   );
 };
 
-EditProductScreen.navigationOptions = ({ navigation }) => {
-  const isCreation = !navigation.getParam('productId');
-  const handleSubmit = navigation.getParam('submit');
-  const saveIcon = isAndroid ? 'md-checkmark' : 'ios-checkmark';
+export const editProductScreenOptions = ({ route }) => {
+  const { params } = route;
+  const isCreation = params ? !params.productId : null;
 
   return {
     headerTitle: isCreation ? 'Add Product' : 'Edit Product',
-    headerRight: () => (
-      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-        <Item title='Save' iconName={saveIcon} onPress={handleSubmit} />
-      </HeaderButtons>
-    ),
   };
 };
 

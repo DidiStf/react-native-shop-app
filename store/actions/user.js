@@ -9,6 +9,7 @@ const API_LOGIN_PATH = `https://identitytoolkit.googleapis.com/v1/accounts:signI
 
 export const AUTHENTICATE_USER = `${ACTION_KEY}/authenticate`;
 export const LOGOUT_USER = `${ACTION_KEY}/logout`;
+export const ATTEMPT_AUTOLOGIN_USER = `${ACTION_KEY}/attemptAutologinUser`;
 
 let timer;
 
@@ -120,4 +121,7 @@ export const logoutUserAction = () => {
     type: LOGOUT_USER,
   };
 };
-//dilyana12345@gmail.com
+
+export const attemptAutologinUser = () => ({
+  type: ATTEMPT_AUTOLOGIN_USER,
+});

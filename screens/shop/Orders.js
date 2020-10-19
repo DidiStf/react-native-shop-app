@@ -54,7 +54,7 @@ const OrdersScreen = () => {
   );
 };
 
-OrdersScreen.navigationOptions = ({ navigation }) => {
+export const ordersScreenOptions = ({ navigation }) => {
   const menuIcon = isAndroid ? 'md-menu' : 'ios-menu';
 
   const handleOnPressMenu = () => {
