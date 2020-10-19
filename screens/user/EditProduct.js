@@ -148,7 +148,7 @@ const EditProductScreen = ({ navigation, route }) => {
 
   return (
     <KeyboardAvoidingView behavior='padding' keyboardVerticalOffset={30}>
-      <ScrollView>
+      <ScrollView style={{ backgroundColor: '#e5b59f', height: '100%' }}>
         <View style={styles.form}>
           <InputWithValidation
             id='title'

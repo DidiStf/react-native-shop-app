@@ -105,7 +105,12 @@ export const ShopNavigator = () => {
           dispatch(logoutUserAction());
         };
         return (
-          <View style={{ flex: 1, paddingVertical: 25 }}>
+          <View
+            style={{
+              flex: 1,
+              paddingVertical: 25,
+              backgroundColor: '#f7dfd4',
+            }}>
             <SafeAreaView forceIncet={{ top: 'always', horizontal: 'never' }}>
               <DrawerItemList {...props} />
               <Button

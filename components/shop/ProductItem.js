@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     height: 300,
     margin: 20,
     overflow: 'hidden',
+    backgroundColor: '#f7dfd4',
   },
   title: {
     fontFamily: 'open-sans-bold',

@@ -39,6 +39,7 @@ const OrdersScreen = () => {
     <FlatList
       data={orders}
       keyExtractor={({ id }) => id}
+      style={{ backgroundColor: '#e5b59f', height: '100%' }}
       renderItem={({ item }) => (
         <OrderItem
           amount={item.amount}

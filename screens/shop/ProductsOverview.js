@@ -85,6 +85,7 @@ const ProductsOverviewScreen = ({ navigation }) => {
       refreshing={isRefreshing}
       data={allProducts}
       keyExtractor={({ id }) => id}
+      style={{ backgroundColor: '#e5b59f' }}
       renderItem={({ item }) => {
         const { id, imageUrl, price, title } = item;
         return (
@@ -94,7 +95,7 @@ const ProductsOverviewScreen = ({ navigation }) => {
             price={price}
             title={title}>
             <Button
-              color={colors.primary}
+              color={colors.accent}
               onPress={() => handleViewDetail(id, title)}
               title='View Details'
             />

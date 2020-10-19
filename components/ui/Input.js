@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   input: {
     paddingHorizontal: 2,
     paddingVertical: 5,
-    borderBottomColor: '#ccc',
+    borderBottomColor: 'black',
     borderBottomWidth: 1,
   },
   label: {

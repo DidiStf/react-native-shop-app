@@ -1,5 +1,5 @@
 // A react-native api that uses a key-value storage on the device which is available on both ios and android
-// where we can store data that persists across app relauches
+// where we can store data that persists across app relaunches
 import { AsyncStorage } from 'react-native';
 
 const ACTION_KEY = 'user';

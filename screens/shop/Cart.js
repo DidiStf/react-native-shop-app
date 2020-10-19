@@ -25,6 +25,7 @@ const CartScreen = () => {
   const dispatch = useDispatch();
   const { totalAmount } = useSelector(selectCart);
   const cartItems = useSelector(selectTransformedCartItems);
+  const disabled = cartItems.length === 0;
 
   const handleOrderNow = async () => {
     setLoading(true);
@@ -47,8 +48,8 @@ const CartScreen = () => {
           <ActivityIndicator size='small' color={colors.primary} />
         ) : (
           <Button
-            color={colors.accent}
-            disabled={cartItems.length === 0}
+            color={colors.primary}
+            disabled={disabled}
             onPress={handleOrderNow}
             title='Order now'
           />
@@ -80,7 +81,8 @@ const styles = StyleSheet.create({
     color: colors.primary,
   },
   screen: {
-    margin: 20,
+    backgroundColor: '#e5b59f',
+    height: '100%',
   },
   summary: {
     flexDirection: 'row',
@@ -88,6 +90,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     margin: 20,
     padding: 10,
+    backgroundColor: '#f7dfd4',
   },
   summaryText: {
     fontFamily: 'open-sans-bold',

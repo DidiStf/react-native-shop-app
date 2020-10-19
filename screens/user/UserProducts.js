@@ -53,6 +53,7 @@ const UserProductsScreen = ({ navigation }) => {
     <FlatList
       data={userProducts}
       keyExtractor={({ id }) => id}
+      style={{ backgroundColor: '#e5b59f', height: '100%' }}
       renderItem={({ item: { id, imageUrl, price, title } }) => (
         <ProductItem
           imageUrl={imageUrl}
