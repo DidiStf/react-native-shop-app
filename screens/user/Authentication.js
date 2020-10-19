@@ -105,7 +105,7 @@ const AuthenticationScreen = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView style={styles.view}>
-      <LinearGradient colors={['#ffedff', '#ffe3ff']} style={styles.gradient}>
+      <LinearGradient colors={['#f7dfd4', '#e5b59f']} style={styles.gradient}>
         <Card style={styles.loginContainer}>
           <ScrollView>
             <InputWithValidation
@@ -173,6 +173,7 @@ const styles = StyleSheet.create({
     maxWidth: 400,
     maxHeight: 400,
     padding: 20,
+    backgroundColor: '#f7dfd4',
   },
   view: {
     flex: 1,

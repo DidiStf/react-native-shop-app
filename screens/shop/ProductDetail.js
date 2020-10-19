@@ -28,7 +28,7 @@ const ProductDetailScreen = ({ route }) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: '#e5b59f', height: '100%' }}>
       <Image style={styles.image} source={{ uri: imageUrl }} />
       <View style={styles.actions}>
         <Button
@@ -37,7 +37,7 @@ const ProductDetailScreen = ({ route }) => {
           onPress={handleAddToCart}
         />
       </View>
-      <Text style={styles.price}>{price.toFixed(2)}</Text>
+      <Text style={styles.price}>{price.toFixed(2)}$</Text>
       <Text style={styles.description}>{description}</Text>
     </ScrollView>
   );

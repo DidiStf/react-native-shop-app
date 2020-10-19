@@ -30,7 +30,7 @@ const CartItem = ({ amount, onRemove, quantity, removable, title }) => {
 const styles = StyleSheet.create({
   cartItem: {
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#f7dfd4',
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 20,
