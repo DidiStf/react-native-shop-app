@@ -28,7 +28,7 @@ const ProductDetailScreen = ({ route }) => {
   };
 
   return (
-    <ScrollView style={{ backgroundColor: '#e5b59f', height: '100%' }}>
+    <ScrollView style={styles.screen}>
       <Image style={styles.image} source={{ uri: imageUrl }} />
       <View style={styles.actions}>
         <Button
@@ -70,6 +70,10 @@ const styles = StyleSheet.create({
     color: '#888',
     textAlign: 'center',
     marginVertical: 20,
+  },
+  screen: {
+    backgroundColor: '#e5b59f',
+    height: '100%',
   },
 });
 

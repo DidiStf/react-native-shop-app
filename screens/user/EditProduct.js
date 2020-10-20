@@ -22,7 +22,7 @@ import {
 import { selectProductById } from '../../store/selectors/products';
 
 import colors from '../../constants/colors';
-import { isAndroid } from '../../helpers/platform';
+import { isAndroid } from '../../utils/platform';
 
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
 
@@ -147,8 +147,8 @@ const EditProductScreen = ({ navigation, route }) => {
   }
 
   return (
-    <KeyboardAvoidingView behavior='padding' keyboardVerticalOffset={30}>
-      <ScrollView style={{ backgroundColor: '#e5b59f', height: '100%' }}>
+    <KeyboardAvoidingView>
+      <ScrollView style={styles.screen} s>
         <View style={styles.form}>
           <InputWithValidation
             id='title'
@@ -198,7 +198,7 @@ const EditProductScreen = ({ navigation, route }) => {
             initiallyValid={!!productId}
             onInputChange={handleOnChange}
             required
-            minLength={15}
+            minLength={10}
             autoCapitalize='sentences'
             autoCorrect
             keyboardType='default'
@@ -217,7 +217,7 @@ const EditProductScreen = ({ navigation, route }) => {
 
 export const editProductScreenOptions = ({ route }) => {
   const { params } = route;
-  const isCreation = params ? !params.productId : null;
+  const isCreation = !params?.productId;
 
   return {
     headerTitle: isCreation ? 'Add Product' : 'Edit Product',
@@ -230,6 +230,10 @@ const styles = StyleSheet.create({
   },
   message: {
     color: '#888',
+  },
+  screen: {
+    backgroundColor: '#e5b59f',
+    height: '100%',
   },
 });
 

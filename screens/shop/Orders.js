@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text } from 'react-native';
+import { ActivityIndicator, FlatList, Text, StyleSheet } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,7 +11,7 @@ import CustomHeaderButton from '../../components/ui/HeaderButton';
 import OrderItem from '../../components/shop/OrderItem';
 
 import colors from '../../constants/colors';
-import { isAndroid } from '../../helpers/platform';
+import { isAndroid } from '../../utils/platform';
 
 const OrdersScreen = () => {
   const dispatch = useDispatch();
@@ -39,13 +39,9 @@ const OrdersScreen = () => {
     <FlatList
       data={orders}
       keyExtractor={({ id }) => id}
-      style={{ backgroundColor: '#e5b59f', height: '100%' }}
-      renderItem={({ item }) => (
-        <OrderItem
-          amount={item.amount}
-          date={item.readableDate}
-          items={item.items}
-        />
+      style={styles.screen}
+      renderItem={({ item: { amount, readableDate, items } }) => (
+        <OrderItem amount={amount} date={readableDate} items={items} />
       )}
     />
   ) : (
@@ -71,5 +67,12 @@ export const ordersScreenOptions = ({ navigation }) => {
     ),
   };
 };
+
+const styles = StyleSheet.create({
+  screen: {
+    backgroundColor: '#e5b59f',
+    height: '100%',
+  },
+});
 
 export default OrdersScreen;

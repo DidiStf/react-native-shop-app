@@ -11,7 +11,7 @@ import {
 
 import Card from '../../components/ui/Card';
 
-import { isAndroid } from '../../helpers/platform';
+import { isAndroid } from '../../utils/platform';
 
 const ProductItem = ({ children, imageUrl, onSelect, price, title }) => {
   const TouchableComponent =

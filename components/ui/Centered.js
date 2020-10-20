@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-const Centered = ({ children, style }) => {
-  return <View style={{ ...style, ...styles.centered }}>{children}</View>;
+const Centered = ({ children }) => {
+  return <View style={styles.centered}>{children}</View>;
 };
 
 const styles = StyleSheet.create({
