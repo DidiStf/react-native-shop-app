@@ -1,5 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, Button, FlatList, Text } from 'react-native';
+import {
+  ActivityIndicator,
+  Button,
+  FlatList,
+  Text,
+  StyleSheet,
+} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
@@ -12,7 +18,7 @@ import CustomHeaderButton from '../../components/ui/HeaderButton';
 import ProductItem from '../../components/shop/ProductItem';
 
 import colors from '../../constants/colors';
-import { isAndroid } from '../../helpers/platform';
+import { isAndroid } from '../../utils/platform';
 
 const ProductsOverviewScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -85,7 +91,7 @@ const ProductsOverviewScreen = ({ navigation }) => {
       refreshing={isRefreshing}
       data={allProducts}
       keyExtractor={({ id }) => id}
-      style={{ backgroundColor: '#e5b59f' }}
+      style={styles.screen}
       renderItem={({ item }) => {
         const { id, imageUrl, price, title } = item;
         return (
@@ -141,5 +147,11 @@ export const productsOverviewScreenOptions = ({ navigation }) => {
     ),
   };
 };
+
+const styles = StyleSheet.create({
+  screen: {
+    backgroundColor: '#e5b59f',
+  },
+});
 
 export default ProductsOverviewScreen;

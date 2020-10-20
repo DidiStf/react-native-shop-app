@@ -15,7 +15,7 @@ export const UPDATE_PRODUCT = `${ACTION_KEY}/updateProduct`;
 export const fetchAllProductsAction = () => async (dispatch, getState) => {
   const { userId } = getState().user;
   try {
-    const result = await fetch(`${API_PATH}/products.json`);
+    const result = await fetch(`${API_PATH}/${ACTION_KEY}.json`);
 
     if (!result.ok) {
       // handling errors 400 and 500 is something proper to firebase
@@ -74,7 +74,7 @@ export const createProductAction = (productData) => async (
   }
 
   const { token, userId } = getState().user;
-  const result = await fetch(`${API_PATH}/products.json?auth=${token}`, {
+  const result = await fetch(`${API_PATH}/${ACTION_KEY}.json?auth=${token}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -107,9 +107,12 @@ export const createProductAction = (productData) => async (
 
 export const deleteProductAction = (id) => async (dispatch, getState) => {
   const { token } = getState().user;
-  const result = await fetch(`${API_PATH}/products/${id}.json?auth=${token}`, {
-    method: 'DELETE',
-  });
+  const result = await fetch(
+    `${API_PATH}/${ACTION_KEY}/${id}.json?auth=${token}`,
+    {
+      method: 'DELETE',
+    }
+  );
 
   if (!result.ok) {
     // handling errors 400 and 500 is something proper to firebase
@@ -128,15 +131,18 @@ export const updateProductAction = (id, productData) => async (
   getState
 ) => {
   const { token } = getState().user;
-  const result = await fetch(`${API_PATH}/products/${id}.json?auth=${token}`, {
-    /* PUT will fully override the ressource with thee new data and
+  const result = await fetch(
+    `${API_PATH}/${ACTION_KEY}/${id}.json?auth=${token}`,
+    {
+      /* PUT will fully override the ressource with thee new data and
     PATCH will only update it in the places the we tell it to update it */
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(productData),
-  });
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(productData),
+    }
+  );
 
   if (!result.ok) {
     // handling errors 400 and 500 is something proper to firebase

@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Alert, ActivityIndicator, Button, FlatList, Text } from 'react-native';
+import {
+  Alert,
+  ActivityIndicator,
+  Button,
+  FlatList,
+  Text,
+  StyleSheet,
+} from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,7 +18,7 @@ import { deleteProductAction } from '../../store/actions/products';
 import { select as selectProducts } from '../../store/selectors/products';
 
 import colors from '../../constants/colors';
-import { isAndroid } from '../../helpers/platform';
+import { isAndroid } from '../../utils/platform';
 
 const UserProductsScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -53,7 +60,7 @@ const UserProductsScreen = ({ navigation }) => {
     <FlatList
       data={userProducts}
       keyExtractor={({ id }) => id}
-      style={{ backgroundColor: '#e5b59f', height: '100%' }}
+      style={styles.screen}
       renderItem={({ item: { id, imageUrl, price, title } }) => (
         <ProductItem
           imageUrl={imageUrl}
@@ -66,7 +73,7 @@ const UserProductsScreen = ({ navigation }) => {
             title='Edit'
           />
           <Button
-            color={colors.primary}
+            color={colors.accent}
             onPress={() => handleTapDelete(id)}
             title='Delete'
           />
@@ -106,5 +113,12 @@ export const userProductsScreenOptions = ({ navigation }) => {
     ),
   };
 };
+
+const styles = StyleSheet.create({
+  screen: {
+    backgroundColor: '#e5b59f',
+    height: '100%',
+  },
+});
 
 export default UserProductsScreen;

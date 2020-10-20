@@ -3,7 +3,7 @@ import { HeaderButton } from 'react-navigation-header-buttons';
 import { Ionicons } from '@expo/vector-icons';
 
 import colors from '../../constants/colors';
-import { isAndroid } from '../../helpers/platform';
+import { isAndroid } from '../../utils/platform';
 
 const CustomHeaderButton = (props) => {
   const color = isAndroid ? 'white' : colors.primary;

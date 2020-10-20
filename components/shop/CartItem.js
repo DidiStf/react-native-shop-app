@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import { isAndroid } from '../../helpers/platform';
+import { isAndroid } from '../../utils/platform';
 
 const CartItem = ({ amount, onRemove, quantity, removable, title }) => {
   return (

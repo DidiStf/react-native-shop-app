@@ -104,7 +104,7 @@ const AuthenticationScreen = ({ navigation }) => {
   }, [error]);
 
   return (
-    <KeyboardAvoidingView style={styles.view}>
+    <KeyboardAvoidingView style={styles.screen}>
       <LinearGradient colors={['#f7dfd4', '#e5b59f']} style={styles.gradient}>
         <Card style={styles.loginContainer}>
           <ScrollView>
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#f7dfd4',
   },
-  view: {
+  screen: {
     flex: 1,
   },
 });

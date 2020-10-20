@@ -30,7 +30,7 @@ import UserProductsScreen, {
 import { logoutUserAction } from '../store/actions/user';
 
 import colors from '../constants/colors';
-import { isAndroid } from '../helpers/platform';
+import { isAndroid } from '../utils/platform';
 
 // TODO: create separate components and import them
 
@@ -178,108 +178,3 @@ export const AuthenticationNavigator = () => (
     />
   </AuthenticationStack.Navigator>
 );
-
-// const ProductsNavigator = createStackNavigator(
-//   {
-//     ProductsOverview: ProductsOverviewScreen,
-//     ProductDetail: ProductDetailScreen,
-//     Cart: CartScreen,
-//   },
-//   {
-//     navigationOptions: {
-//       drawerIcon: (drawerConfig) => (
-//         <Ionicons
-//           name={isAndroid ? 'md-cart' : 'ios-cart'}
-//           size={23}
-//           color={drawerConfig.tintColor}
-//         />
-//       ),
-//     },
-//     defaultNavigationOptions,
-//   }
-// );
-
-// const OrdersNavigator = createStackNavigator(
-//   {
-//     Orders: OrdersScreen,
-//   },
-//   {
-//     navigationOptions: {
-//       drawerIcon: (drawerConfig) => (
-//         <Ionicons
-//           name={isAndroid ? 'md-list' : 'ios-list'}
-//           size={23}
-//           color={drawerConfig.tintColor}
-//         />
-//       ),
-//     },
-//     defaultNavigationOptions,
-//   }
-// );
-
-// const AdminNavigator = createStackNavigator(
-//   {
-//     UserProducts: UserProductsScreen,
-//     EditProduct: EditProductScreen,
-//   },
-//   {
-//     navigationOptions: {
-//       drawerIcon: (drawerConfig) => (
-//         <Ionicons
-//           name={isAndroid ? 'md-create' : 'ios-create'}
-//           size={23}
-//           color={drawerConfig.tintColor}
-//         />
-//       ),
-//     },
-//     defaultNavigationOptions,
-//   }
-// );
-
-// const ShopNavigator = createDrawerNavigator(
-//   {
-//     Products: ProductsNavigator,
-//     Orders: OrdersNavigator,
-//     Admin: AdminNavigator,
-//   },
-//   {
-//     contentOptions: {
-//       activeTintColor: colors.primary,
-//     },
-//     contentComponent: ({ navigation, ...props }) => {
-//       const dispatch = useDispatch();
-//       const handleTapLogout = () => {
-//         dispatch(logoutUserAction());
-//       };
-//       return (
-//         <View style={{ flex: 1, paddingVertical: 25 }}>
-//           <SafeAreaView forceIncet={{ top: 'always', horizontal: 'never' }}>
-//             <DrawerItems {...props} />
-//             <Button
-//               title='Logout'
-//               color={colors.primary}
-//               onPress={handleTapLogout}
-//             />
-//           </SafeAreaView>
-//         </View>
-//       );
-//     },
-//   }
-// );
-
-// const AuthenticationNavigator = createStackNavigator(
-//   {
-//     Authentication: AuthenticationScreen,
-//   },
-//   {
-//     defaultNavigationOptions,
-//   }
-// );
-
-// const MainNavigator = createSwitchNavigator({
-//   Startup: StartupScreen,
-//   Authentication: AuthenticationNavigator,
-//   Shop: ShopNavigator,
-// });
-
-// export default createAppContainer(MainNavigator);
