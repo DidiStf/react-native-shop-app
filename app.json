@@ -31,6 +31,7 @@
         "backgroundColor": "#f7dfd4"
       },
       "package": "com.didistf.shop_app",
+      "permissions": ["NOTIFICATIONS "],
       "versionCode": 1,
       "useNextNotificationsApi": true
     }

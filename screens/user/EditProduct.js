@@ -134,7 +134,7 @@ const EditProductScreen = ({ navigation, route }) => {
 
   useEffect(() => {
     if (error) {
-      Alert.alert('An error occurred!', error[{ text: 'Okay' }]);
+      Alert.alert('An error occurred!', error, [{ text: 'Okay' }]);
     }
   }, [error]);
 
