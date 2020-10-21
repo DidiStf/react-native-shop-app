@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "565068859256",
+    "firebase_url": "https://shop-app-didistf.firebaseio.com",
+    "project_id": "shop-app-didistf",
+    "storage_bucket": "shop-app-didistf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565068859256:android:65aaa9e5c15fce264eea8d",
+        "android_client_info": {
+          "package_name": "com.didistf.shop_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "565068859256-h0pslru767g37pjsaeo3ae88v1dmh8tg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSsIigpaCC8xeyClpiXLNtFECbe_Lh-6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "565068859256-h0pslru767g37pjsaeo3ae88v1dmh8tg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -70,7 +70,7 @@ export const createProductAction = (productData) => async (
   if (statusObj.status !== 'granted') {
     pushToken = null;
   } else {
-    pushToken = (await Notifications.getExpoPushTokenAsync()).data;
+    pushToken = await Notifications.getExpoPushTokenAsync().data;
   }
 
   const { token, userId } = getState().user;

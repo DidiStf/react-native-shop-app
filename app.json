@@ -30,6 +30,7 @@
         "foregroundImage": "./assets/images/shop-app-icon.png",
         "backgroundColor": "#f7dfd4"
       },
+      "googleServicesFile": "./google-services.json",
       "package": "com.didistf.shop_app",
       "permissions": ["NOTIFICATIONS "],
       "versionCode": 1,
