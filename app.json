@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/images/shop-app-splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#e5b59f"
+      "backgroundColor": "#f7dfd4"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -28,7 +28,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/shop-app-icon.png",
-        "backgroundColor": "#e5b59f"
+        "backgroundColor": "#f7dfd4"
       },
       "package": "com.didistf.shop_app",
       "versionCode": 1,
