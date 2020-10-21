@@ -1,14 +1,15 @@
 {
   "expo": {
-    "name": "shop-app",
+    "name": "Shop App",
+    "description": "A sample e-shop App.",
     "slug": "shop-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/shop-app-icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/shop-app-splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#e5b59f"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -17,12 +18,20 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.didistf.shop-app",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/shop-app-icon.png",
+        "backgroundColor": "#e5b59f"
+      },
+      "package": "com.didistf.shop_app",
+      "versionCode": 1,
       "useNextNotificationsApi": true
     }
   }
