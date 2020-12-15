@@ -56,8 +56,6 @@ const ProductsOverviewScreen = ({ navigation }) => {
     return () => {
       unsubscribe();
     };
-    /* we won't add navigation nor addListener as dependencies to avoid entering in an infinite
-    loop if we change navigation for example by setting some props to comunicate wuth the header, etc. */
   }, [loadProducts]);
 
   // fetch products initially
