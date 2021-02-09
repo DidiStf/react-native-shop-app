@@ -37,7 +37,7 @@ const ProductDetailScreen = ({ route }) => {
           onPress={handleAddToCart}
         />
       </View>
-      <Text style={styles.price}>{price.toFixed(2)}$</Text>
+      <Text style={styles.price}>{price.toFixed(2)}€</Text>
       <Text style={styles.description}>{description}</Text>
     </ScrollView>
   );

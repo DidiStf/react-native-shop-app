@@ -42,7 +42,7 @@ const CartScreen = () => {
       <Card style={styles.summary}>
         <Text style={styles.summaryText}>
           Total:{' '}
-          <Text style={styles.amount}>{Math.abs(totalAmount.toFixed(2))}$</Text>
+          <Text style={styles.amount}>{Math.abs(totalAmount.toFixed(2))}€</Text>
         </Text>
         {isLoading ? (
           <ActivityIndicator size='small' color={colors.primary} />

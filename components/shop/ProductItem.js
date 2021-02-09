@@ -29,7 +29,7 @@ const ProductItem = ({ children, imageUrl, onSelect, price, title }) => {
             </View>
             <View style={styles.details}>
               <Text style={styles.title}>{title}</Text>
-              <Text style={styles.price}>{price.toFixed(2)}$</Text>
+              <Text style={styles.price}>{price.toFixed(2)}€</Text>
             </View>
             <View style={styles.actions}>{children}</View>
           </View>

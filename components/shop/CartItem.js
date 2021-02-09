@@ -12,7 +12,7 @@ const CartItem = ({ amount, onRemove, quantity, removable, title }) => {
         <Text style={styles.mainText}>{title}</Text>
       </View>
       <View style={styles.itemData}>
-        <Text style={styles.mainText}>{amount.toFixed(2)}$</Text>
+        <Text style={styles.mainText}>{amount.toFixed(2)}€</Text>
         {removable && (
           <TouchableOpacity onPress={onRemove} style={styles.deleteButton}>
             <Ionicons
