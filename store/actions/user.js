@@ -1,11 +1,12 @@
 // A react-native api that uses a key-value storage on the device which is available on both ios and android
 // where we can store data that persists across app relaunches
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from '@react-native-community/async-storage';
+
+import { GOOGLE_API_KEY } from '../../env';
 
 const ACTION_KEY = 'user';
-const API_KEY = 'AIzaSyDupvjDBEYHapBO1jdPpcdmf1xj92aKW4k';
-const API_SIGNUP_PATH = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`;
-const API_LOGIN_PATH = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`;
+const API_SIGNUP_PATH = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${GOOGLE_API_KEY}`;
+const API_LOGIN_PATH = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${GOOGLE_API_KEY}`;
 
 export const AUTHENTICATE_USER = `${ACTION_KEY}/authenticate`;
 export const LOGOUT_USER = `${ACTION_KEY}/logout`;
