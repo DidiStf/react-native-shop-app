@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { ActivityIndicator, AsyncStorage } from 'react-native';
+import { ActivityIndicator } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { useDispatch } from 'react-redux';
 
 import Centered from '../components/ui/Centered';
@@ -22,17 +23,26 @@ const StartupScreen = ({ navigation }) => {
     }
 
     const transformedData = JSON.parse(userData);
-    const { token, userId, expiryDate } = transformedData;
-    const tokenExpirationDate = new Date(expiryDate);
+    const tokenExpirationDate = new Date(transformedData?.expiryDate);
 
-    if (tokenExpirationDate <= new Date() || !token || !userId) {
+    if (
+      tokenExpirationDate <= new Date() ||
+      !transformedData?.token ||
+      !transformedData?.userId
+    ) {
       dispatch(attemptAutologinUser());
     }
 
     const expiryTimeInMiliseconds =
       tokenExpirationDate.getTime() - new Date().getTime();
 
-    dispatch(authenticateUserAction(userId, token, expiryTimeInMiliseconds));
+    dispatch(
+      authenticateUserAction(
+        transformedData?.userId,
+        transformedData?.token,
+        expiryTimeInMiliseconds
+      )
+    );
   };
 
   useEffect(() => {
