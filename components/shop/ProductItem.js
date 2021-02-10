@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   product: {
-    height: 300,
+    height: 330,
     margin: 20,
     overflow: 'hidden',
     backgroundColor: '#f7dfd4',
