@@ -28,7 +28,9 @@ const ProductItem = ({ children, imageUrl, onSelect, price, title }) => {
               <Image source={{ uri: imageUrl }} style={styles.image} />
             </View>
             <View style={styles.details}>
-              <Text style={styles.title}>{title}</Text>
+              <Text style={styles.title} numberOfLines={1}>
+                {title}
+              </Text>
               <Text style={styles.price}>{price.toFixed(2)}€</Text>
             </View>
             <View style={styles.actions}>{children}</View>
